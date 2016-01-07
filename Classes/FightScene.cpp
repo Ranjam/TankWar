@@ -30,6 +30,7 @@ bool FightScene::init(int stage, int player1, int player2) {
     tmxLayer->setGlobalZOrder(3);
 
     //Animation init
+    //born
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("born.plist");
     Animation *born = Animation::create();
     for (int i = 1; i < 5; ++i){
@@ -42,6 +43,7 @@ bool FightScene::init(int stage, int player1, int player2) {
     born->setLoops(3);
     AnimationCache::getInstance()->addAnimation(born,"born");
 
+    //died
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("blast.plist");
     Animation *died = Animation::create();
     for (int i = 1; i < 9; ++i){
@@ -54,6 +56,7 @@ bool FightScene::init(int stage, int player1, int player2) {
     died->setLoops(1);
     AnimationCache::getInstance()->addAnimation(died,"died");
 
+    //Bullet died
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("blast.plist");
     Animation *blast = Animation::create();
     for (int i = 1; i < 3; ++i){
@@ -66,6 +69,7 @@ bool FightScene::init(int stage, int player1, int player2) {
     blast->setLoops(1);
     AnimationCache::getInstance()->addAnimation(blast,"blast");
 
+    //init player life and set symbol
     this->_player1 = player1;
     this->_player2 = player2;
     _symbol = 1;
@@ -135,16 +139,18 @@ void FightScene::update(float dt) {
 
     setPlayer();
     controlPlayer();
-//    autoDead();
+//    autoDead();  // just for debug
     adjustBullet();
     removeTank();
     gameOverCheck();
 }
 
+// No use
 void FightScene::onEnter() {
     Node::onEnter();
 }
 
+//Enemy tank move func
 void FightScene::enemyTankMove(float dt) {
 
     static int moveHZ1 = 0;
@@ -219,6 +225,7 @@ void FightScene::enemyTankMove(float dt) {
     }
 }
 
+//Check tank if can move
 bool FightScene::canMove(Tank *tank, DIRECTION move_direction) {
     Rect tankRect = tank->getBoundingBox();
     Vec2 judgePoint[3];
@@ -294,6 +301,7 @@ bool FightScene::canMove(Tank *tank, DIRECTION move_direction) {
             if (sprite == NULL) {
                 continue;
             }
+            // Debug drawnode
 //            if (GID[tmxLayer0->getTileGIDAt(Vec2(i, j))])
 //                drawNode->drawRect(Vec2(sprite->getPositionX() * 1.84f,sprite->getPositionY() * 1.84f),
 //                                   Vec2(sprite->getPositionX() * 1.84f + 18.4f, sprite->getPositionY() * 1.84f + 18.4f),Color4F(1,0,0,1));
@@ -313,6 +321,7 @@ bool FightScene::canMove(Tank *tank, DIRECTION move_direction) {
         return true;
 }
 
+//Add enemy func
 void FightScene::addEnemy(float dt) {
     static int enemyBornHZ = 0;
     enemyBornHZ = (enemyBornHZ + 1) % (ENEMYBORNHZ + 1);
@@ -334,6 +343,7 @@ void FightScene::addEnemy(float dt) {
     }
 }
 
+//Remove tank func
 void FightScene::removeTank() {
 
     for (auto tank : _allTankArray){
@@ -357,6 +367,7 @@ void FightScene::removeTank() {
     }
 }
 
+// Debug func
 void FightScene::autoDead() {
 
     static int deadline = 0;
@@ -369,6 +380,7 @@ void FightScene::autoDead() {
     }
 }
 
+// Control player func
 void FightScene::controlPlayer() {
 
     //Get tank
@@ -438,6 +450,7 @@ void FightScene::controlPlayer() {
     }
 }
 
+//Set player func
 void FightScene::setPlayer() {
     //Create tank sprite
     if (_player1 && this->getChildByTag(1) == nullptr) {
@@ -491,6 +504,7 @@ void FightScene::setPlayer() {
     }
 }
 
+//Create fight layer
 FightScene *FightScene::create(int stage, int player1, int player2) {
     FightScene *layer = new (std::nothrow)FightScene;
     if (layer && layer->init(stage,player1,player2)){
@@ -504,6 +518,7 @@ FightScene *FightScene::create(int stage, int player1, int player2) {
     }
 }
 
+//Create fight layer
 Scene *FightScene::createScene(int stage, int player1, int player2) {
     Scene *scene = Scene::create();
     FightScene *fightScene = FightScene::create(stage,player1,player2);
@@ -511,6 +526,7 @@ Scene *FightScene::createScene(int stage, int player1, int player2) {
     return scene;
 }
 
+//Adjust bullets
 void FightScene::adjustBullet() {
     for (auto bullet : _bulletLayer->getAllBullet()){
         if (bullet->getPositionX() < 0 || bullet->getPositionX() > winSize.width
@@ -568,6 +584,7 @@ void FightScene::adjustBullet() {
     }
 }
 
+// Check gameover func
 void FightScene::gameOverCheck() {
     if (_player1 == 0 && _player2 == 0 || _symbol == 0){
         SimpleAudioEngine::getInstance()->end();
