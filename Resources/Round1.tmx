@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="26" height="26" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="landform" tilewidth="16" tileheight="16" tilecount="36">
+  <image source="landform/landform.png" trans="000000" width="96" height="96"/>
+ </tileset>
+ <layer name="layer_0" width="26" height="26">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA62WjYrDMAyD08Cthd0O9gPb+z/ppTCB+IiSDhYQnakTWXbstZZSlvL5Wjqo9uSqYU/y11oB+e+/twHPpeHP/GXXia2V9pPn3vCwc2Rvb7hN/2L2gv3O4/zKmWzlJdnK0UwP+amH738aTvAf5YM8SQ/fnxt+oYf6ti/oUd6O2s7j8VfE4/dVd1ZPR9LvfeX5Zfz0qwZfI/2b7WfPsV89/9TvvGkupFlAnpR/z53rJU/qi5Rfr5XXK+3jPWWczPcop8tgH8/3+ATX77rZX763Aqnu5GR9dD7rxXsuaM3mF/WQj/2T5rli8byuJfcD53e6f5zn4mG+k57evKae3jz/VM+R/6fefKOeVJ90rpbXYy3z+vAc9kn6hiDvrD6Mj98YvW8P90/fE9TDeLw/0mxx/169fF6zjx3q8/3sa8PNeI7O4csbqZ8de3zPhhe0zrCf/w8y91QqkAoAAA==
+  </data>
+ </layer>
+ <layer name="layer_1" width="26" height="26">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAVDGTADMcuoPaP2jNozas+oPaP2QAEnEHPRwZ5RMAqoCQBMy/sVkAoAAA==
+  </data>
+ </layer>
+</map>
