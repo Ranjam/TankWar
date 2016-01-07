@@ -9,6 +9,7 @@ bool FightScene::init(int stage, int player1, int player2) {
         return false;
     }
 
+    //AudioEngine init
     SimpleAudioEngine::getInstance()->preloadEffect("sounds/fexplosion.wav");
     SimpleAudioEngine::getInstance()->preloadEffect("sounds/shoot.wav");
     SimpleAudioEngine::getInstance()->preloadEffect("sounds/moving.wav");
