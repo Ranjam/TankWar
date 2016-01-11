@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="landform" tilewidth="16" tileheight="16" tilecount="36">
+  <image source="landform/landform.png" width="96" height="96"/>
+ </tileset>
+ <layer name="块层 1" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztVtEKwyAQO33RF/e0///WUTCQZlHbQTsGEw716l2SO1sa8R+/NNKXsc/ir2JKNzcyzSl8rhWfNDDgbrkfEwN26/skufkcBnxtkGObK+EX4oXYRM8b+XlUg6+8H5SjdV/tcxbeiB/xwbPos9YJ8ZwfehtxqrHvg9YNPubP60La2Y/4Sn7uG+O6uzTTx3XQukCbYgOf68lrxQZ+oVjmqvi8flJ8jX3d+WzEOzZrZ3yN43q7Wqj2IhxYu3tfFBv59JzjhVrp/Xd9dByK2Oq7lc1z3WsuZw7f7RXb4auf8RWHOav2Feejpnlc7hx73lfaSN8d+FfU92j9XX8x7qz3Ef2uD6P+zPrmNI/eqU/1jfBX2Pp9Ue2a88zdnGHxPw9yvgCc3goi
+  </data>
+ </layer>
+</map>
