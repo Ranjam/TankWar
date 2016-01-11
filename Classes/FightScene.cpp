@@ -84,6 +84,12 @@ bool FightScene::init(int stage, int player1, int player2) {
     this->scheduleUpdate();
     this->schedule(schedule_selector(FightScene::enemyTankMove), 0, -1, 1.65f);
     this->schedule(schedule_selector(FightScene::addEnemy), 1.0f);
+
+
+    //Drawline
+    DrawNode *drawNode = DrawNode::create();
+    this->addChild(drawNode);
+    drawNode->drawLine(Vec2(480, 480), Vec2(480, 0), Color4F(1.0f,0, 0, 1.0f));
     return true;
 }
 

@@ -125,18 +125,23 @@ set(GAME_SRC
         Classes/AppDelegate.cpp
         Classes/HelloWorldScene.cpp
         ${PLATFORM_SPECIFIC_SRC}
+        Classes/Tank.cpp
+        Classes/FightScene.cpp
+        Classes/BulletLayer.cpp
+        Classes/GameOver.cpp
+        Classes/GameStart.cpp
         )
 
 set(GAME_HEADERS
         Classes/AppDelegate.h
         Classes/HelloWorldScene.h
         ${PLATFORM_SPECIFIC_HEADERS}
-        Classes/Tank.cpp Classes/Tank.h
-        Classes/FightScene.cpp Classes/FightScene.h
-        Classes/BulletLayer.cpp Classes/BulletLayer.h
+        Classes/Tank.h
+        Classes/FightScene.h
+        Classes/BulletLayer.h
         Classes/Tool.h
-        Classes/GameOver.cpp Classes/GameOver.h
-        Classes/GameStart.cpp Classes/GameStart.h
+        Classes/GameOver.h
+        Classes/GameStart.h
         )
 
 if (GAME_HEADERS)

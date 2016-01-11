@@ -16,6 +16,11 @@ bool GameStart::init() {
         return false;
     }
 
+    TMXTiledMap *backGround = TMXTiledMap::create("startbackground.tmx");
+    backGround->setScale(1.84f);
+    backGround->setPosition(Vec2(20,20));
+    this->addChild(backGround);
+
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic("sounds/levelstarting.wav");
 
     MenuItemFont *menuItemFont1 = MenuItemFont::create("Start Game", [](Ref *pSender){
@@ -24,9 +29,9 @@ bool GameStart::init() {
         TransitionProgressRadialCW *transitionProgressRadialCW = TransitionProgressRadialCW::create(0.5f,scene);
         Director::getInstance()->replaceScene(transitionProgressRadialCW);
     });
-
     Menu *menu = Menu::create(menuItemFont1, NULL);
     menu->alignItemsHorizontally();
+    menu->setPosition(Vec2(FrameSize.width / 2, FrameSize.height / 2 - 120));
     this->addChild(menu);
     return true;
 }
