@@ -1528,11 +1528,11 @@
       <sourceFolder url="file://$MODULE_DIR$/proj.linux/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Classes/AppDelegate.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Classes/FightScene.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Classes/StageScene.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Classes/BulletLayer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Classes/GameOver.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Classes/AppDelegate.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Classes/GameStart.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Classes/Tank.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Classes/StageScene.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Classes/Tank.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Classes/GameStart.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Classes/GameOver.cpp" isTestSource="false" />
@@ -1540,8 +1540,10 @@
       <sourceFolder url="file://$MODULE_DIR$/Classes/Tool.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Classes/HelloWorldScene.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Classes/BulletLayer.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Classes/AppDelegate.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Classes/FightScene.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Classes/HelloWorldScene.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Classes/Tank.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Classes/GameStart.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

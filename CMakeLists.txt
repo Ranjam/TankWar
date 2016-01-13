@@ -130,7 +130,7 @@ set(GAME_SRC
         Classes/BulletLayer.cpp
         Classes/GameOver.cpp
         Classes/GameStart.cpp
-        )
+        Classes/StageScene.cpp)
 
 set(GAME_HEADERS
         Classes/AppDelegate.h
@@ -142,7 +142,7 @@ set(GAME_HEADERS
         Classes/Tool.h
         Classes/GameOver.h
         Classes/GameStart.h
-        )
+        Classes/StageScene.cpp Classes/StageScene.cpp Classes/StageScene.h)
 
 if (GAME_HEADERS)
     if (WIN32)

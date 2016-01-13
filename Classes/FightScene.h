@@ -49,12 +49,16 @@ public:
 
     void autoDead();
 
+    void winTheScene();
+
 private:
     Vector<Tank *> _enemyArray;
     Vector<Tank *> _allTankArray;
     int _player1;
     int _player2;
     int _symbol;
+    int _enemyCount;
+    int _currentStage;
     BulletLayer *_bulletLayer;
     TMXTiledMap *_tiledMap;
 };

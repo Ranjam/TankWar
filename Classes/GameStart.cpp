@@ -3,6 +3,7 @@
 //
 
 #include "GameStart.h"
+#include "StageScene.h"
 
 Scene *GameStart::createScene() {
     Scene *scene = Scene::create();
@@ -21,11 +22,8 @@ bool GameStart::init() {
     backGround->setPosition(Vec2(20,20));
     this->addChild(backGround);
 
-    SimpleAudioEngine::getInstance()->preloadBackgroundMusic("sounds/levelstarting.wav");
-
     MenuItemFont *menuItemFont1 = MenuItemFont::create("Start Game", [](Ref *pSender){
-        SimpleAudioEngine::getInstance()->playBackgroundMusic("sounds/levelstarting.wav");
-        Scene *scene = FightScene::createScene(1,3,3);
+        Scene *scene = StageScene::createScene(1,3,3);
         TransitionProgressRadialCW *transitionProgressRadialCW = TransitionProgressRadialCW::create(0.5f,scene);
         Director::getInstance()->replaceScene(transitionProgressRadialCW);
     });

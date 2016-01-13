@@ -3,6 +3,7 @@
 //
 
 #include "FightScene.h"
+#include "StageScene.h"
 
 bool FightScene::init(int stage, int player1, int player2) {
     if(!Layer::init()) {
@@ -20,7 +21,9 @@ bool FightScene::init(int stage, int player1, int player2) {
     _bulletLayer->retain();
 
     //TileMap
-    _tiledMap = TMXTiledMap::create("Round1.tmx");
+    char tileStage[20];
+    sprintf(tileStage, "Round%d.tmx", stage);
+    _tiledMap = TMXTiledMap::create(tileStage);
     this->addChild(_tiledMap);
     _tiledMap->retain();
     _tiledMap->setScale(1.84f);
@@ -72,7 +75,30 @@ bool FightScene::init(int stage, int player1, int player2) {
     //init player life and set symbol
     this->_player1 = player1;
     this->_player2 = player2;
-    _symbol = 1;
+    this->_symbol = 1;
+    this->_enemyCount = 10;
+    this->_currentStage = stage;
+
+    //Label set
+    char temp[20];
+    sprintf(temp, "Enemy:%d", _enemyCount);
+    Label *printCountEnemy = Label::create(temp,"Courier", 20);
+    printCountEnemy->setPosition(Vec2(FrameSize.width - 100, FrameSize.height - 100));
+    this->addChild(printCountEnemy);
+    printCountEnemy->setTag(3);
+
+    sprintf(temp, "Player1:%d", _player1);
+    Label *printCountPlaer1 = Label::create(temp,"Courier", 20);
+    this->addChild(printCountPlaer1);
+    printCountPlaer1->setPosition(Vec2(FrameSize.width - 100, FrameSize.height - 200));
+    printCountPlaer1->setTag(4);
+
+    sprintf(temp, "Player2:%d", _player2);
+    Label *printCountPlaer2 = Label::create(temp,"Courier", 20);
+    this->addChild(printCountPlaer2);
+    printCountPlaer2->setPosition(Vec2(FrameSize.width - 100, FrameSize.height - 300));
+    printCountPlaer2->setTag(5);
+
     Sprite *symbol = Sprite::create("symbol.png");
     this->addChild(symbol);
     symbol->setPosition(Vec2(240, 20));
@@ -149,6 +175,7 @@ void FightScene::update(float dt) {
     adjustBullet();
     removeTank();
     gameOverCheck();
+    winTheScene();
 }
 
 // No use
@@ -176,7 +203,7 @@ void FightScene::enemyTankMove(float dt) {
     };
 
     for(auto tank: _enemyArray){
-        //Can't move while borning
+//        Can't move while borning
         if (tank->isBorn())
             continue;
         DIRECTION direct = direction[(int)(CCRANDOM_0_1() * 4)];
@@ -339,7 +366,9 @@ void FightScene::addEnemy(float dt) {
     };
     int randomPlace = (int)(CCRANDOM_0_1()*3);
     int randomType = (int)(CCRANDOM_0_1()*3);
-    if (_enemyArray.size() < 3 || enemyBornHZ % ENEMYBORNHZ == 0 && _enemyArray.size() < ENEMYMAXCOUNT){
+    if (_enemyArray.size() < 3 && _enemyCount > 0 || (enemyBornHZ % ENEMYBORNHZ == 0 && _enemyArray.size() < ENEMYMAXCOUNT)
+            && _enemyCount > 0){
+        _enemyCount--;
         Tank *tank = Tank::create(tanktype[randomType],DIRECTION::DOWN);
         tank->setPosition(bornPlace[randomPlace]);
         this->addChild(tank);
@@ -607,3 +636,27 @@ void FightScene::gameOverCheck() {
     }
 }
 
+void FightScene::winTheScene() {
+    //When you killed all enemy, you need wait sometime to go to next stage.
+    static float waitTime = 0;
+    if (_enemyCount == 0 && _enemyArray.size() == 0){
+        waitTime += 0.1f;
+        if (waitTime > 30.0f) {
+            Scene *scene = StageScene::createScene(_currentStage + 1, _player1, _player2);
+            TransitionCrossFade *transitionCrossFade = TransitionCrossFade::create(.5f ,scene);
+            Director::getInstance()->replaceScene(scene);
+        }
+    }
+    char temp[20];
+    sprintf(temp, "Enemy:\n%d", _enemyCount);
+    Label *label0 = (Label *)this->getChildByTag(3);
+    label0->setString(temp);
+
+    sprintf(temp, "Player1:\n%d", _player1);
+    Label *label1 = (Label *)this->getChildByTag(4);
+    label1->setString(temp);
+
+    sprintf(temp, "Player2:\n%d", _player2);
+    Label *label2 = (Label *)this->getChildByTag(5);
+    label2->setString(temp);
+}

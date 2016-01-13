@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "GameStart.h"
+#include "StageScene.h"
 
 USING_NS_CC;
 
@@ -77,6 +78,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 //    auto scene = HelloWorld::createScene();
 //    auto scene = FightScene::createScene(1,3,3);
+//    auto scene = StageScene::createScene(3, 2, 2);
     auto scene = GameStart::createScene();
 
     // run
