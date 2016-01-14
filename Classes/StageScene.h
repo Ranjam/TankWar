@@ -16,6 +16,10 @@ public:
     static Scene* createScene(int stage, int player1, int player2);
     static StageScene *create(int stage, int player1, int player2);
     bool init(int stage, int player1, int player2);
+    void update(float dt);
+
+private:
+    int _stage;
 };
 
 

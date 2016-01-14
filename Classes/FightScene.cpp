@@ -30,7 +30,9 @@ bool FightScene::init(int stage, int player1, int player2) {
 
     //Set the tank under the tank
     TMXLayer *tmxLayer = _tiledMap->getLayer("layer_1");
-    tmxLayer->setGlobalZOrder(3);
+    if (tmxLayer != nullptr) {
+        tmxLayer->setGlobalZOrder(3);
+    }
 
     //Animation init
     //born
